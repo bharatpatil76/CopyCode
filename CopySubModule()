@@ -1,0 +1,22 @@
+//Copy submodule data
+function CopySubModule() {
+    $('#statusTxt').text('');
+    var allselectedFeatureIDs = [];
+    if ($("#divCopySubModule input[type=text]").val() != null && $("#divCopySubModule input[type=text]").val() != "" && $("#divCopySubModule input[type=text]").val() != undefined && $("#divCopySubModule input[type=checkbox]:checked").length > 0) {
+        
+        var mappedIds = '';
+        $("#divCopySubModule input[type=checkbox]:checked").each(function () {
+
+            var a = $(this).prop('id');
+               a= (a.replace("MainContent_ModuleSubModule_TreeView1n", "")).replace("CheckBox", "");
+            allselectedFeatureIDs.push(a);
+                
+            //allselectedFeatureIDs.push($(this).parent().find("span").text());
+        });
+        copiedSubmoduleID = 0;
+        pushCopySubmoduledata(allselectedFeatureIDs,$("#divCopySubModule input[type=text]").val());
+        //copiedSubmoduleID = 117;
+    } else {
+        alert(NothingToSaveMessage);
+    }
+}
